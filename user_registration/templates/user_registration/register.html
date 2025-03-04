@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}
+Register Page
+{% endblock title %}
+
+
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+
+
+    <div class="content">
+
+        <div class="form-container">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Submit</button>
+</div>
+</div>
+
+</form>
+
+
+{% endblock content %}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        Layout
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+       
+</head>
+<body>
+
+
+<div class="sidebar">
+
+<ul>
+
+
+    {% if user.is_authenticated %}
+    <li> 
+<form method="POST" action="{% url "user_r:logout" %}">
+   {% csrf_token %}
+   <button type="submit">Deconnexion</button>
+
+</form>
+</li>
+
+<li>
+   
+    <a href=""> Mon profil</a>
+   
+   
+
+</li>
+
+<li>
+    <a href="{% url 'post:self_posts' %}"> Mes post</a>
+   
+</li>
+
+<li>
+    <a href="{% url 'post:create_post' %}"> Créer un post</a>
+
+
+{% else %}
+
+<li>
+<a href="{% url "user_r:login" %}">Se connecter</a> 
+</li>
+<li>
+<a href="{% url "user_r:register" %}">S'enregistrer</a> 
+</li>
+{% endif %}
+
+<li><a href="{% url "post:all_posts" %}">Regarder les posts</a></li>
+
+</li>
+
+</ul>
+
+</div>
+
+
+        {% block content %}
+        {% endblock content %}
+    
+</body>
+</html>

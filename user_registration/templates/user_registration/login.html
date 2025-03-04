@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}
+Login Page
+{% endblock title %}
+
+
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+
+
+
+       
+    <div class="content">
+
+        <div class="form-container">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Login</button>
+        </div>
+</div>
+
+</form>
+
+
+{% endblock content %}

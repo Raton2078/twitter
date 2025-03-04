@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+All Posts
+
+{% endblock title %}
+
+{% block content %}
+
+<div class='posts-container'>
+
+
+    {% for post in posts  %}
+    <p class='post'>{{post.auteur}}: {{post.contenue}}</p>
+    
+    {% endfor %}
+    </div>
+
+{% endblock content %}
