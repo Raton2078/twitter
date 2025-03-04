@@ -11,7 +11,7 @@ All Posts
 
 
     {% for post in posts  %}
-    <p class='post'>{{post.auteur}}: {{post.contenue}}</p>
+    <p class='post'><a href="{% url "user_r:profil" post.auteur %}">{{post.auteur}}</a>: {{post.contenue}}</p>
     
     {% endfor %}
     </div>

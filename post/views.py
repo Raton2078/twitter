@@ -23,6 +23,12 @@ def see_all_post(request):
    return render(request, 'post/all_posts.html', {'posts': posts})
 
 
+
+
+   
+
+
+
 @login_required 
 def see_self_post(request):
 
