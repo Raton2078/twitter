@@ -131,3 +131,25 @@ input::placeholder, textarea::placeholder {
     color: red;
     font-size: 14px;
 }
+/* Conteneur principal du profil */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Hauteur égale à la fenêtre */
+    width: calc(100% - 200px); /* Prend tout l'espace sauf la sidebar */
+    margin-left: 200px; /* Décale pour ne pas être caché par la sidebar */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Décale vers le haut de 50% de sa propre hauteur */
+}
+
+/* Carte du profil */
+.profile-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}

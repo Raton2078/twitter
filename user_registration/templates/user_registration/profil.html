@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-card">
+        <h2>{{ user.username }}</h2>
+        <p class="bio">{{ user.bio }}</p>
+
+        {% if request.user != user %}
+            <form action="{% url 'user_r:subscription_to' request.user.username user.username %}" method="post">
+                {% csrf_token %}
+                <button type="submit">
+                    {% if user in request.user.following.all %}
+                        Se désabonner
+                    {% else %}
+                        S'abonner
+                    {% endif %}
+                </button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

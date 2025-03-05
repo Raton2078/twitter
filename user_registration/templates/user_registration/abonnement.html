@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}
+Sub page
+{% endblock title %}
+
+
+{% block content %}
+
+{% for sub in test  %}
+
+<h1>{{sub.subscriber.username}}</h1>
+
+{% endfor%}
+
+
+{% endblock content %}
