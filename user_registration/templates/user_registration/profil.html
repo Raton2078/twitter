@@ -5,19 +5,26 @@
     <div class="profile-card">
         <h2>{{ user.username }}</h2>
         <p class="bio">{{ user.bio }}</p>
-
+        <p>abonnés: {{followers_number}}    abonnements: {{following_number}}</p>
         {% if request.user != user %}
-            <form action="{% url 'user_r:subscription_to' request.user.username user.username %}" method="post">
-                {% csrf_token %}
-                <button type="submit">
-                    {% if user in request.user.following.all %}
-                        Se désabonner
+           
+                    {% if exist %}
+                    <form action="{% url 'user_r:unfollow' request.user.username user.username %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                        Se désabonner                </button>
+
                     {% else %}
-                        S'abonner
+                    <form action="{% url 'user_r:subscription_to' request.user.username user.username %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                        S'abonner</button>
                     {% endif %}
-                </button>
             </form>
         {% endif %}
     </div>
 </div>
+
+>
+
 {% endblock %}

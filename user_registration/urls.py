@@ -9,6 +9,7 @@ urlpatterns = [
     path('logout/', views.logout_view,name='logout'),
     path('profil/<str:username>/', views.see_profil, name='profil'),
     path('subscription_to/<str:subscriber>/<str:subscribed_to>/', views.subscription_to, name='subscription_to'),
+    path('unfollow/<str:subscriber>/<str:subscribed_to>/', views.unfollow,name='unfollow')
   #  path('test/', views.subscriber_page,name='test')
     
 ]

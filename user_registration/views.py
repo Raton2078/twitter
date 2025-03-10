@@ -42,18 +42,32 @@ def logout_view(request):
 #Foncction permettant de voir le profile de l'utilisateur passé en paramètre 
 def see_profil(request,username):
     user = get_object_or_404(CustomUser,username=username)
-    return render(request, 'user_registration/profil.html', {'user': user} )
+    exist= request.user.is_following(user)
+    followers_number = user.subcribe_number()
+    following_number = user.subscribed_to_number()
+    return render(request, 'user_registration/profil.html', {'user': user,
+                                                             'exist': exist,
+                                                              'followers_number': followers_number,
+                                                              'following_number': following_number,
+                                                              }
+                                                               )
 
 #Fonction permettant l'abonnement entre utilisateur
 def subscription_to(request, subscriber,subscribed_to):
     user1 = CustomUser.objects.get(username=subscriber)
     user2 = CustomUser.objects.get(username=subscribed_to)
 
-    if not Subscription.objects.filter(subscriber=user1, subscribed_to=user2).exists():
-        subscription = Subscription.objects.create(subscriber=user1, subscribed_to=user2)
-    test = Subscription.objects.filter(subscribed_to=user1)
-    return render(request, 'user_registration/abonnement.html',{'test':test})
+    if user1.is_following(user2) == False:
+        #subscription = Subscription.objects.create(subscriber=user1, subscribed_to=user2)
+         user1.follow(user2)
+    test = user2.followers_list()
+    return redirect('/')
 
+def unfollow(request, subscriber,subscribed_to ):
+    user1 = CustomUser.objects.get(username=subscriber)
+    user2 = CustomUser.objects.get(username=subscribed_to)
+    user1.unfollow(user2)
+    return redirect('/')
 
 
 """
