@@ -153,3 +153,16 @@ input::placeholder, textarea::placeholder {
     text-align: center;
     width: 400px;
 }
+
+
+.centered-container {
+    display: flex;
+    justify-content: center;  /* Centre horizontalement */
+    align-items: center;  /* Centre verticalement */
+    height: 100vh;  /* Fait occuper toute la hauteur de l'écran */
+    width: 100%;  /* S'assure que la div prend toute la largeur */
+    text-align: center;  /* Centre le texte à l'intérieur */
+    flex-direction: column; /* Empêche les éléments de s'aligner en ligne */
+}
+
+
